@@ -5,15 +5,15 @@ using Gozer.Core.Communication;
 using Gozer.Core.Health.Contract;
 using Newtonsoft.Json;
 
-namespace Gozer.Core.Wong.FactoryClasses
+namespace Gozer.Core.Clortho.FactoryClasses
 {
     public class Register
     {
-        private readonly Wong _wong;
+        private readonly Clortho _Clortho;
 
-        public Register(Wong server)
+        public Register(Clortho server)
         {
-            _wong = server;
+            _Clortho = server;
         }
 
         public RegistratedServiceIstance AddService<T>(string endpoint, ServicesBinding binding) where T : IServicesHealthConnection
@@ -34,7 +34,7 @@ namespace Gozer.Core.Wong.FactoryClasses
 
             string data = JsonConvert.SerializeObject(serviceRequest, jsonSerializerSettings);
 
-            var path = _wong.BasUrl + ProtocolRoutePaths.Register;
+            var path = _Clortho.BasUrl + ProtocolRoutePaths.Register;
 
             var response = client.PostAsync(path, new StringContent(data)).Result;
             response.EnsureSuccessStatusCode();
@@ -44,7 +44,7 @@ namespace Gozer.Core.Wong.FactoryClasses
             IServiceRegistrationAck ack =
                 JsonConvert.DeserializeObject<IServiceRegistrationAck>(content, jsonSerializerSettings);
 
-            var registeredService = new RegistratedServiceIstance(_wong, ack);
+            var registeredService = new RegistratedServiceIstance(_Clortho, ack);
 
             return registeredService;
         }

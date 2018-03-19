@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using Gozer.Core.Wong;
+using Gozer.Core.Clortho;
 using TestClientInterfaces;
 
 namespace ConsoleApp1

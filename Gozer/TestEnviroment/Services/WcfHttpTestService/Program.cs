@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using Gozer.Contract;
-using Gozer.Core;
-using Gozer.Core.Wong;
+using Gozer.Core.Clortho;
 using TestClientInterfaces;
 
 namespace WcfHttpTestService1

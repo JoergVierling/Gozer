@@ -4,22 +4,22 @@ using System.ServiceModel.Channels;
 using Gozer.Core.Communication;
 using Newtonsoft.Json;
 
-namespace Gozer.Core.Wong.FactoryClasses
+namespace Gozer.Core.Clortho.FactoryClasses
 {
     public class Consume
     {
-        private readonly Wong _wong;
+        private readonly Clortho _Clortho;
 
-        public Consume(Wong server)
+        public Consume(Clortho server)
         {
-            _wong = server;
+            _Clortho = server;
         }
 
         public T Get<T>() 
         {
           var svcManager = new ServiceManager<T>();
 
-            var service = svcManager.GetService(_wong.BasUrl);
+            var service = svcManager.GetService(_Clortho.BasUrl);
 
             var channel = svcManager.GetChannel(service.binding, service.EndpointAdress);
 

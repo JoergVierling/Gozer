@@ -1,10 +1,10 @@
-﻿namespace Gozer.Core.Wong
+﻿namespace Gozer.Core.Clortho
 {
-    public class Wong
+    public class Clortho
     {
         public string BasUrl { get; }
 
-        public Wong(string url)
+        public Clortho(string url)
         {
             BasUrl = url;
         }

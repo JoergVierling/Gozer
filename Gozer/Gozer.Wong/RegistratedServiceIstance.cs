@@ -5,16 +5,16 @@ using Gozer.Core;
 using Gozer.Core.Communication;
 using Newtonsoft.Json;
 
-namespace Gozer.Wong
+namespace Gozer.Clortho
 {
     public class RegistratedServiceIstance : IDisposable
     {
-        private readonly Core.Wong _wong;
+        private readonly Core.Clortho _Clortho;
         private readonly IServiceRegistrationAck _ack;
 
-        public RegistratedServiceIstance(Core.Wong wong, IServiceRegistrationAck ack)
+        public RegistratedServiceIstance(Core.Clortho Clortho, IServiceRegistrationAck ack)
         {
-            _wong = wong;
+            _Clortho = Clortho;
             _ack = ack;
         }
 
@@ -30,7 +30,7 @@ namespace Gozer.Wong
 
             string data = JsonConvert.SerializeObject(_ack, jsonSerializerSettings);
 
-            var path = _wong.BasUrl + ProtocolRoutePaths.Remove; ;
+            var path = _Clortho.BasUrl + ProtocolRoutePaths.Remove; ;
 
             var response = client.PostAsync(path, new StringContent(data)).Result;
 

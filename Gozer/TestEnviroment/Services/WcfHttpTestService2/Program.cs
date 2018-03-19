@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using Gozer.Contract;
-using Gozer.Core;
-using Gozer.Core.Wong;
+using Gozer.Core.Clortho;
 using TestClientInterfaces;
 
 namespace WcfHttpTestService2
@@ -13,7 +12,6 @@ namespace WcfHttpTestService2
     {
         static void Main(string[] args)
         {
-
             using (Factory.GetServiceRegistrator("http://localhost:25723")
                 .AddService<IWcfHttpTestService>("http://localhost:8082/Service", ServicesBinding.WebHttpBinding))
             {
