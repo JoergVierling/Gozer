@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -13,9 +14,8 @@ namespace Gozer.Core
 {
     public class ServiceManager<T>
     {
-        public IServiceDelivery GetService(string basUrl)
+        public (bool Found, IServiceDelivery ServiceInformation) GetService(string basUrl)
         {
-
             HttpClient client = new HttpClient();
 
             var jsonSerializerSettings = new JsonSerializerSettings()
@@ -29,11 +29,16 @@ namespace Gozer.Core
             var path = basUrl + ProtocolRoutePaths.Request;
 
             var response = client.PostAsync(path, new StringContent(data)).Result;
-            response.EnsureSuccessStatusCode();
-            string content = response.Content.ReadAsStringAsync().Result;
 
-            IServiceDelivery serviceResult =
-                JsonConvert.DeserializeObject<IServiceDelivery>(content, jsonSerializerSettings);
+            (bool Found, IServiceDelivery ServiceInformation) serviceResult = (response.StatusCode == HttpStatusCode.OK, null);
+
+            if (serviceResult.Found)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                var element= JsonConvert.DeserializeObject<IServiceDelivery>(content, jsonSerializerSettings);
+
+                serviceResult.ServiceInformation = element;
+            }
 
             return serviceResult;
         }
@@ -66,7 +71,7 @@ namespace Gozer.Core
             DuplexChannelFactory<T> channelFactory =
                 new DuplexChannelFactory<T>(callback, binding, endpointAddress);
 
-           //Now create the new channel as below  
+            //Now create the new channel as below  
             var channel = channelFactory.CreateChannel();
 
             return channel;
@@ -90,7 +95,5 @@ namespace Gozer.Core
 
             return binding;
         }
-
-
     }
 }

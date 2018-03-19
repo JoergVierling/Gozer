@@ -3,6 +3,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Threading;
 using Gozer.Contract;
+using Gozer.Contract.Communication;
 using Gozer.Core;
 using Gozer.Core.Clortho;
 using TestClientInterfaces;
@@ -37,12 +38,18 @@ namespace ConsoleApp1
         {
             Thread.Sleep(2000);
 
-            var channel = Factory.GetServiceConsumer("http://localhost:25723")
-                .Get<IWcfHttpTestService>();
+            var request = Factory.Request("http://localhost:25723");
+            var channel = request.Get<IWcfHttpTestService>();
 
-            var message = channel.GetMeldung();
-
-            Console.WriteLine(message);
+            if (request.HasOne<IWcfDuplexTestService>())
+            {
+                var message = channel.GetMeldung();
+                Console.WriteLine(message);
+            }
+            else
+            {
+                Console.WriteLine("No Service Found");
+            }
         }
 
         private static void BasicNetTcp()
@@ -52,13 +59,36 @@ namespace ConsoleApp1
             InstanceContext
                  a = new InstanceContext(new CallbackImpl());
 
-            var channel = Factory.GetServiceConsumer("http://localhost:25723")
-                .GetDuplex<IWcfDuplexTestService>(a);
+            var request = Factory.Request("http://localhost:25723");
+            var channel = request.GetDuplex<IWcfDuplexTestService>(a);
 
-            Console.WriteLine(channel.GetMeldung());
+            if (request.HasOne<IWcfDuplexTestService>())
+            {
+                ShowApiInformation(request.GetApiInformation<IWcfDuplexTestService>(),
+                    typeof(IWcfDuplexTestService).ToString());
+
+                Console.WriteLine(channel.GetMeldung());
+            }
+            else
+            {
+                Console.WriteLine("No Service Found");
+            }
+
+
         }
 
+        private static void ShowApiInformation(IServiceDelivery serviceDelivery, string type)
+        {
+            Console.WriteLine("ShowApiInformation");
+            Console.WriteLine($"Type: {type}");
+            Console.WriteLine($"EndpointAdress: {serviceDelivery.EndpointAdress}");
+            Console.WriteLine($"Binding: {serviceDelivery.binding}");
+
+        }
     }
+
+
+
     class CallbackImpl : IWcfDuplexTestCallback
     {
 

@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using Gozer.Contract.Communication;
 using Gozer.Core.Communication;
 using Newtonsoft.Json;
 
@@ -15,14 +16,19 @@ namespace Gozer.Core.Clortho.FactoryClasses
             _clortho = server;
         }
 
-        public T Get<T>() 
+        public T Get<T>()
         {
-          var svcManager = new ServiceManager<T>();
+            var svcManager = new ServiceManager<T>();
 
-            var service = svcManager.GetService(_clortho.BasUrl);
+            var serviceTuple = svcManager.GetService(_clortho.BasUrl);
 
-            var channel = svcManager.GetChannel(service.binding, service.EndpointAdress);
-
+            T channel = default(T);
+            if (serviceTuple.Found)
+            {
+                IServiceDelivery service = serviceTuple.ServiceInformation;
+                channel = svcManager.GetChannel(service.binding, service.EndpointAdress);
+            }
+            
             return channel;
         }
 
@@ -30,11 +36,34 @@ namespace Gozer.Core.Clortho.FactoryClasses
         {
             var svcManager = new ServiceManager<T>();
 
+            var serviceTuple = svcManager.GetService(_clortho.BasUrl);
+
+            T channel = default(T);
+            if (serviceTuple.Found)
+            {
+                IServiceDelivery service = serviceTuple.ServiceInformation;
+                channel = svcManager.GetChannel(service.binding, service.EndpointAdress, callback);
+            }
+            
+            return channel;
+        }
+
+        public IServiceDelivery GetApiInformation<T>()
+        {
+            var svcManager = new ServiceManager<T>();
+
             var service = svcManager.GetService(_clortho.BasUrl);
 
-            var channel = svcManager.GetChannel(service.binding, service.EndpointAdress, callback);
+            return service.ServiceInformation;
+        }
 
-            return channel;
+        public bool HasOne<T>()
+        {
+            var svcManager = new ServiceManager<T>();
+
+            var service = svcManager.GetService(_clortho.BasUrl);
+
+            return service.Found;
         }
     }
 }
