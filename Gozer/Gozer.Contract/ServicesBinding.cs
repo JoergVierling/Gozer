@@ -2,6 +2,7 @@
 {
     public enum ServicesBinding
     {
-        WebHttpBinding
+        WebHttpBinding,
+        NetTcpBinding
     }
 }

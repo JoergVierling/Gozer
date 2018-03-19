@@ -1,5 +1,9 @@
 ﻿using System;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Threading;
+using Gozer.Contract;
+using Gozer.Core;
 using Gozer.Core.Clortho;
 using TestClientInterfaces;
 
@@ -17,15 +21,8 @@ namespace ConsoleApp1
                 {
                     try
                     {
-                        Thread.Sleep(2000);
-
-                        var channel = Factory.GetServiceConsumer("http://localhost:25723")
-                            .Get<IWcfHttpTestService>();
-
-                        var message = channel.GetMeldung();
-
-                        Console.WriteLine(message);
-
+                        //BasicHttp();
+                        BasicNetTcp();
                     }
                     catch (Exception e)
                     {
@@ -36,11 +33,39 @@ namespace ConsoleApp1
 
         }
 
+        private static void BasicHttp()
+        {
+            Thread.Sleep(2000);
 
-        //static void Main(string[] args)
-        //{
-        //    RegistratedServiceIstance registeredService = 
-        //        Factory.GetServiceRegistrator("http://localhost:25723").AddService<ITestService>("", ServicesKind.WcfServices);
-        //}
+            var channel = Factory.GetServiceConsumer("http://localhost:25723")
+                .Get<IWcfHttpTestService>();
+
+            var message = channel.GetMeldung();
+
+            Console.WriteLine(message);
+        }
+
+        private static void BasicNetTcp()
+        {
+            Thread.Sleep(2000);
+
+            InstanceContext
+                 a = new InstanceContext(new CallbackImpl());
+
+            var channel = Factory.GetServiceConsumer("http://localhost:25723")
+                .GetDuplex<IWcfDuplexTestService>(a);
+
+            Console.WriteLine(channel.GetMeldung());
+        }
+
     }
+    class CallbackImpl : IWcfDuplexTestCallback
+    {
+
+        public void ReturnRuntime(string userName)
+        {
+            Console.WriteLine(userName);
+        }
+    }
+
 }

@@ -38,17 +38,9 @@ namespace Gozer.Core
             return serviceResult;
         }
 
-        public T GetChannel(ServicesBinding usedBinding,string endpoint)
+        public T GetChannel(ServicesBinding usedBinding, string endpoint)
         {
-            Binding binding = null;
-
-            switch (usedBinding)
-            {
-
-                case ServicesBinding.WebHttpBinding:
-                    binding = new BasicHttpBinding();
-                    break;
-            }
+            Binding binding = GetBinding(usedBinding);
 
 
             //Create EndPoint address  
@@ -62,6 +54,43 @@ namespace Gozer.Core
 
             return channel;
         }
+
+        public T GetChannel(ServicesBinding usedBinding, string endpoint, InstanceContext callback)
+        {
+            Binding binding = GetBinding(usedBinding);
+
+            //Create EndPoint address  
+            EndpointAddress endpointAddress = new EndpointAddress(endpoint);
+
+            //Pass Binding and EndPoint address to ChannelFactory  
+            DuplexChannelFactory<T> channelFactory =
+                new DuplexChannelFactory<T>(callback, binding, endpointAddress);
+
+           //Now create the new channel as below  
+            var channel = channelFactory.CreateChannel();
+
+            return channel;
+        }
+
+        public Binding GetBinding(ServicesBinding usedBinding)
+        {
+            Binding binding = null;
+
+            switch (usedBinding)
+            {
+
+                case ServicesBinding.WebHttpBinding:
+                    binding = new BasicHttpBinding();
+                    break;
+
+                case ServicesBinding.NetTcpBinding:
+                    binding = new NetTcpBinding();
+                    break;
+            }
+
+            return binding;
+        }
+
 
     }
 }

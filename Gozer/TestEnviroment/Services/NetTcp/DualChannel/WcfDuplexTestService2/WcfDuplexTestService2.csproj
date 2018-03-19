@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CD82A5D0-11E5-47AE-984A-9BA8BE304437}</ProjectGuid>
+    <ProjectGuid>{FE0D264E-8662-4F61-9ED9-7789187EE4DB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>WcfHttpTestService1</RootNamespace>
-    <AssemblyName>WcfHttpTestService1</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RootNamespace>WcfDuplexTestService2</RootNamespace>
+    <AssemblyName>WcfDuplexTestService2</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -32,20 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Http, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.ServiceModel.Http.4.4.1\lib\net461\System.ServiceModel.Http.dll</HintPath>
+    <Reference Include="System.ServiceModel.NetTcp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.ServiceModel.NetTcp.4.4.1\lib\net461\System.ServiceModel.NetTcp.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel.Primitives, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.ServiceModel.Primitives.4.4.1\lib\net461\System.ServiceModel.Primitives.dll</HintPath>
+      <HintPath>..\..\..\..\..\packages\System.ServiceModel.Primitives.4.4.1\lib\net461\System.ServiceModel.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,21 +58,19 @@
     <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Gozer.Contract\Gozer.Contract.csproj">
+    <ProjectReference Include="..\..\..\..\..\Gozer.Contract\Gozer.Contract.csproj">
       <Project>{4635F2AC-C6C8-471A-96A1-0F356C64C883}</Project>
       <Name>Gozer.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Gozer.Core\Gozer.Core.csproj">
+    <ProjectReference Include="..\..\..\..\..\Gozer.Core\Gozer.Core.csproj">
       <Project>{60921729-A3BA-4609-92E5-316BD1521189}</Project>
       <Name>Gozer.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TestClientInterfaces\TestClientInterfaces.csproj">
+    <ProjectReference Include="..\..\..\..\TestClientInterfaces\TestClientInterfaces.csproj">
       <Project>{2C288A52-B8C6-4FFC-872E-6DA6067BD100}</Project>
       <Name>TestClientInterfaces</Name>
     </ProjectReference>
