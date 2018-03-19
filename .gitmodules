@@ -1,0 +1,3 @@
+[submodule "submodule/IdentityServer"]
+	path = submodule/IdentityServer
+	url = https://jvierling.visualstudio.com/DefaultCollection/HomeSystem/_git/IdentityServer
