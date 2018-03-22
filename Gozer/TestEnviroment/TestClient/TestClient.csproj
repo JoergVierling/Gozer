@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Gozer.Clortho\Gozer.Clortho.csproj" />
     <ProjectReference Include="..\..\Gozer.Core\Gozer.Core.csproj" />
     <ProjectReference Include="..\..\Gozer\Gozer.csproj" />
     <ProjectReference Include="..\TestClientInterfaces\TestClientInterfaces.csproj" />

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
+using Gozer.Clortho;
 using Gozer.Contract;
-using Gozer.Core.Clortho;
 using TestClientInterfaces;
 
 namespace WcfHttpTestService2
@@ -12,13 +10,27 @@ namespace WcfHttpTestService2
     {
         static void Main(string[] args)
         {
-            using (Factory.GetServiceRegistrator("http://localhost:25723")
-                .AddService<IWcfHttpTestService>("http://localhost:8082/Service", ServicesBinding.WebHttpBinding))
+            IClorthoRegister register = ClorthoFactory.Register("http://localhost:25723");
+            register.ConnectionEvent += RegisterOnConnectionErrorEvent;
+
+            using (register.AddService<IWcfHttpTestService>("http://localhost:8082/Service", ServicesBinding.WebHttpBinding))
             {
                 ServiceHost host = new ServiceHost(typeof(Service));
                 host.Open();
                 Console.WriteLine("Service Hosted 2 running");
                 Console.Read();
+            }
+        }
+
+        private static void RegisterOnConnectionErrorEvent(object sender, IConnectionStatusChangedEvent connectionErrorEvent)
+        {
+            if (connectionErrorEvent.Succes)
+            {
+                Console.WriteLine("Connected");
+            }
+            else
+            {
+                Console.WriteLine($"Fehler in der Komponente {connectionErrorEvent.Exception.Source}");
             }
         }
     }

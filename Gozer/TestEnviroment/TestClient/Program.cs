@@ -1,11 +1,9 @@
 ﻿using System;
 using System.ServiceModel;
-using System.ServiceModel.Channels;
 using System.Threading;
+using Gozer.Clortho;
 using Gozer.Contract;
 using Gozer.Contract.Communication;
-using Gozer.Core;
-using Gozer.Core.Clortho;
 using TestClientInterfaces;
 
 namespace ConsoleApp1
@@ -14,7 +12,6 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine("Press ESC to stop");
             do
             {
@@ -31,17 +28,19 @@ namespace ConsoleApp1
                     }
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
-
         }
 
         private static void BasicHttp()
         {
             Thread.Sleep(2000);
 
-            var request = Factory.Request("http://localhost:25723");
-            var channel = request.Get<IWcfHttpTestService>();
+            IClortho request = ClorthoFactory.Get("http://localhost:25723");
+            var channel = request.Get<IWcfHttpTestService>().Result;
 
-            if (request.HasOne<IWcfDuplexTestService>())
+            var found = request.HasOne<IWcfDuplexTestService>().Result;
+
+
+            if (found)
             {
                 var message = channel.GetMeldung();
                 Console.WriteLine(message);
@@ -56,25 +55,21 @@ namespace ConsoleApp1
         {
             Thread.Sleep(2000);
 
-            InstanceContext
-                 a = new InstanceContext(new CallbackImpl());
+            InstanceContext instanceContext = new InstanceContext(new CallbackImpl());
 
-            var request = Factory.Request("http://localhost:25723");
-            var channel = request.GetDuplex<IWcfDuplexTestService>(a);
+            IClortho request = ClorthoFactory.Get("http://localhost:25723", 0);
+            request.ConnectionEvent += RegisterOnConnectionErrorEvent;
 
-            if (request.HasOne<IWcfDuplexTestService>())
+            IWcfDuplexTestService channel = request.GetDuplex<IWcfDuplexTestService>(instanceContext).Result;
+
+            if (channel != null)
             {
-                ShowApiInformation(request.GetApiInformation<IWcfDuplexTestService>(),
-                    typeof(IWcfDuplexTestService).ToString());
-
                 Console.WriteLine(channel.GetMeldung());
             }
             else
             {
                 Console.WriteLine("No Service Found");
             }
-
-
         }
 
         private static void ShowApiInformation(IServiceDelivery serviceDelivery, string type)
@@ -83,19 +78,26 @@ namespace ConsoleApp1
             Console.WriteLine($"Type: {type}");
             Console.WriteLine($"EndpointAdress: {serviceDelivery.EndpointAdress}");
             Console.WriteLine($"Binding: {serviceDelivery.binding}");
-
+        }
+        private static void RegisterOnConnectionErrorEvent(object sender, IConnectionStatusChangedEvent connectionErrorEvent)
+        {
+            if (connectionErrorEvent.Succes)
+            {
+                Console.WriteLine("Connected");
+            }
+            else
+            {
+                Console.WriteLine($"Fehler in der Komponente {connectionErrorEvent.Exception.Source}");
+                Console.WriteLine(connectionErrorEvent.Exception.Message);
+            }
         }
     }
 
-
-
     class CallbackImpl : IWcfDuplexTestCallback
     {
-
         public void ReturnRuntime(string userName)
         {
             Console.WriteLine(userName);
         }
     }
-
 }

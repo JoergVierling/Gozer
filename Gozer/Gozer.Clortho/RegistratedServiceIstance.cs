@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Net.Http;
+using Gozer.Contract;
+using Gozer.Contract.Communication;
 using Gozer.Core;
-using Gozer.Core;
-using Gozer.Core.Communication;
 using Newtonsoft.Json;
 
 namespace Gozer.Clortho
 {
-    public class RegistratedServiceIstance : IDisposable
+    public class RegistratedServiceIstance : IRegistratedServiceIstance
     {
-        private readonly Core.Clortho _Clortho;
+        public IGozerServer GozerServer { get; set; }
         private readonly IServiceRegistrationAck _ack;
 
-        public RegistratedServiceIstance(Core.Clortho Clortho, IServiceRegistrationAck ack)
+        public RegistratedServiceIstance(IGozerServer gozerServer, IServiceRegistrationAck ack)
         {
-            _Clortho = Clortho;
+            GozerServer = gozerServer;
             _ack = ack;
         }
-
 
         public void Dispose()
         {
@@ -30,12 +29,11 @@ namespace Gozer.Clortho
 
             string data = JsonConvert.SerializeObject(_ack, jsonSerializerSettings);
 
-            var path = _Clortho.BasUrl + ProtocolRoutePaths.Remove; ;
+            var path = GozerServer.BasUrl + ProtocolRoutePaths.Remove; ;
 
             var response = client.PostAsync(path, new StringContent(data)).Result;
 
             response.EnsureSuccessStatusCode();
-
         }
     }
 }

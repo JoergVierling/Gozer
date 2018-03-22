@@ -1,11 +1,10 @@
 ﻿using Gozer.Contract;
 using Gozer.Core.Health.Model;
+using Gozer.Health.Model;
 
 
-namespace Gozer.Core.Health.Implementation
+namespace Gozer.Health.Implementation
 {
-    //Manager
-
     public class ServiceHealthCreator
     {
         private readonly ServiceHealthFunctions _srcFunctions;
@@ -24,11 +23,8 @@ namespace Gozer.Core.Health.Implementation
                 FreeMemory = _srcFunctions.GetMemUsage()
             };
 
-
             return health;
         }
     }
-
-
 }
 

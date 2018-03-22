@@ -1,8 +1,9 @@
 ﻿using System;
 using Gozer.Contract;
+using Gozer.Core;
 using Gozer.Core.Health.Contract;
 
-namespace Gozer.Core.Health.Implementation
+namespace Gozer.Health.Implementation
 {
     public class ServiceHealthFunctions
     {
@@ -10,7 +11,7 @@ namespace Gozer.Core.Health.Implementation
 
         public ServiceHealthFunctions(ServicesBinding binding, string endpoint)
         {
-            var svc = new ServiceManager<IServicesHealthConnection>();
+            var svc = new ServiceManager<IServicesHealthConnection>(0);
             _channel = svc.GetChannel(binding, endpoint);
         }
 
@@ -25,7 +26,7 @@ namespace Gozer.Core.Health.Implementation
             }
             catch (Exception e)
             {
-                //_logger.LogInformation($"Service Died {serviceObject.EndpointAdress}");
+               
                 isAlive = false;
             }
 
@@ -42,7 +43,7 @@ namespace Gozer.Core.Health.Implementation
             }
             catch (Exception e)
             {
-                //_logger.LogInformation($"Service {serviceObject.EndpointAdress} Died with Message:{e.Message}");
+                
             }
 
             return cpuLoad;
@@ -58,8 +59,7 @@ namespace Gozer.Core.Health.Implementation
             }
             catch (Exception e)
             {
-                //_logger.LogInformation($"Service {serviceObject.EndpointAdress} Died with Message:{e.Message}");
-
+   
             }
 
             return memUsage;

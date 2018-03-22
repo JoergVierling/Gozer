@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Gozer.Contract;
 using Gozer.Contract.Communication;
 using Gozer.Core.Communication;
@@ -14,7 +17,21 @@ namespace Gozer.Core
 {
     public class ServiceManager<T>
     {
-        public (bool Found, IServiceDelivery ServiceInformation) GetService(string basUrl)
+        private event EventHandler<IConnectionStatusChangedEvent> ConnectionEvent;
+        private int _maxConnectionTime;
+
+        public ServiceManager(int maxConnectionTime)
+        {
+            _maxConnectionTime = maxConnectionTime;
+        }
+
+        public ServiceManager(EventHandler<IConnectionStatusChangedEvent> onConnectionEvent, int maxConnectionTime)
+        {
+            ConnectionEvent = onConnectionEvent;
+            _maxConnectionTime = maxConnectionTime;
+        }
+
+        public async Task<(bool Found, IServiceDelivery ServiceInformation)> GetService(string basUrl)
         {
             HttpClient client = new HttpClient();
 
@@ -28,17 +45,53 @@ namespace Gozer.Core
 
             var path = basUrl + ProtocolRoutePaths.Request;
 
-            var response = client.PostAsync(path, new StringContent(data)).Result;
+            Stopwatch sp = Stopwatch.StartNew();
+            var maxWaitTime = new TimeSpan(0, 0, _maxConnectionTime, 0);
 
-            (bool Found, IServiceDelivery ServiceInformation) serviceResult = (response.StatusCode == HttpStatusCode.OK, null);
+            (bool Found, IServiceDelivery ServiceInformation) serviceResult = (false, null);
+            
+            HttpResponseMessage response = null;
+            do
+            {
+                try
+                {
+                    response = await client.PostAsync(path, new StringContent(data));
+                    
+                    ConnectionEvent?.Invoke(this, new ConnectionStatusChangedEvent(isConnected: true));
+                }
+                catch (Exception e)
+                {
+                    ConnectionEvent?.Invoke(this, new ConnectionStatusChangedEvent(e));
+                }
+
+                Thread.Sleep(500);
+
+            } while (response?.StatusCode != HttpStatusCode.OK && sp.Elapsed <= maxWaitTime);
+
+            sp.Stop();
+
+            if (response == null)
+            {
+                if (sp.Elapsed > maxWaitTime)
+                {
+                    ConnectionEvent?.Invoke(this,
+                        new ConnectionStatusChangedEvent(
+                            new MaxWaitingTimeException($"Client waited {_maxConnectionTime} Minutes")));
+                }
+            }
+            else
+            {
+                serviceResult.Found = response.StatusCode == HttpStatusCode.OK;
+            }
 
             if (serviceResult.Found)
             {
-                string content = response.Content.ReadAsStringAsync().Result;
-                var element= JsonConvert.DeserializeObject<IServiceDelivery>(content, jsonSerializerSettings);
+                string content = await response.Content.ReadAsStringAsync();
+                var element = JsonConvert.DeserializeObject<IServiceDelivery>(content, jsonSerializerSettings);
 
                 serviceResult.ServiceInformation = element;
             }
+            
 
             return serviceResult;
         }

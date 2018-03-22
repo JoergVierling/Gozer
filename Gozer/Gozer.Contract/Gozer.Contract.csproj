@@ -10,7 +10,10 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>..\..\..\..\Users\Admin\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <HintPath>..\..\..\..\..\Users\Admin\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Duplex">
+      <HintPath>..\..\..\..\..\Users\Admin\.nuget\packages\system.servicemodel.duplex\4.4.1\ref\netstandard2.0\System.ServiceModel.Duplex.dll</HintPath>
     </Reference>
   </ItemGroup>
 

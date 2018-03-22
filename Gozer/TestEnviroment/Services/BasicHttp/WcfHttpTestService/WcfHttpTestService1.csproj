@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System.ServiceModel.Primitives, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\System.ServiceModel.Primitives.4.4.1\lib\net461\System.ServiceModel.Primitives.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,13 +67,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Gozer.Clortho\Gozer.Clortho.csproj">
+      <Project>{56EE10AC-8C57-403A-8E35-B831ADFCFF48}</Project>
+      <Name>Gozer.Clortho</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\Gozer.Contract\Gozer.Contract.csproj">
       <Project>{4635F2AC-C6C8-471A-96A1-0F356C64C883}</Project>
       <Name>Gozer.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Gozer.Core\Gozer.Core.csproj">
-      <Project>{60921729-A3BA-4609-92E5-316BD1521189}</Project>
-      <Name>Gozer.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\TestClientInterfaces\TestClientInterfaces.csproj">
       <Project>{2C288A52-B8C6-4FFC-872E-6DA6067BD100}</Project>

@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Gozer.Clortho\Gozer.Clortho.csproj">
+      <Project>{56EE10AC-8C57-403A-8E35-B831ADFCFF48}</Project>
+      <Name>Gozer.Clortho</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\Gozer.Contract\Gozer.Contract.csproj">
       <Project>{4635F2AC-C6C8-471A-96A1-0F356C64C883}</Project>
       <Name>Gozer.Contract</Name>

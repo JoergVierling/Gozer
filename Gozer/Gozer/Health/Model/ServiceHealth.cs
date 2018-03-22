@@ -1,7 +1,8 @@
 ﻿using System;
 using Gozer.Contract;
+using Gozer.Core.Health.Model;
 
-namespace Gozer.Core.Health.Model
+namespace Gozer.Health.Model
 {
     public class ServiceHealth : IServiceHealth
     {

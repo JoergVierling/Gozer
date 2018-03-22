@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
+using Gozer.Clortho;
 using Gozer.Contract;
-using Gozer.Core.Clortho;
 using TestClientInterfaces;
 
 namespace WcfDuplexTestService2
@@ -10,11 +10,12 @@ namespace WcfDuplexTestService2
     {
         static void Main(string[] args)
         {
+            var url = "net.tcp://localhost:9011/service";
 
-            var url = "net.tcp://localhost:9001/service";
+            IClorthoRegister register = ClorthoFactory.Register("http://localhost:25723");
+            register.ConnectionEvent += RegisterOnConnectionErrorEvent;
 
-            using (Factory.GetServiceRegistrator("http://localhost:25723")
-                .AddService<IWcfDuplexTestService>(url, ServicesBinding.NetTcpBinding))
+            using (register.AddService<IWcfDuplexTestService>(url, ServicesBinding.NetTcpBinding))
             {
                 ServiceHost duplex = new ServiceHost(typeof(Service));
                 duplex.AddServiceEndpoint(typeof(IWcfDuplexTestService), new NetTcpBinding(), url);
@@ -22,6 +23,18 @@ namespace WcfDuplexTestService2
 
                 Console.WriteLine("Service Hosted NetTcp 2 running");
                 Console.Read();
+            }
+        }
+
+        private static void RegisterOnConnectionErrorEvent(object sender, IConnectionStatusChangedEvent connectionErrorEvent)
+        {
+            if (connectionErrorEvent.Succes)
+            {
+                Console.WriteLine("Connected");
+            }
+            else
+            {
+                Console.WriteLine($"Fehler in der Komponente {connectionErrorEvent.Exception.Source}");
             }
         }
     }

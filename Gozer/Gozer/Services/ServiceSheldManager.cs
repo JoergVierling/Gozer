@@ -58,7 +58,7 @@ namespace Gozer.Options
 
             if (service != null)
             {
-                var isAlive = Core.Health.Factory.IsServiceAlive(service);
+                var isAlive = Health.Factory.IsServiceAlive(service);
 
                 if (isAlive)
                 {
@@ -88,7 +88,7 @@ namespace Gozer.Options
 
         public List<IServiceHealth> GetInventur()
         {
-            List<IServiceHealth> heathStatus = _sheldService.Select(Core.Health.Factory.GetServiceHealth).ToList();
+            List<IServiceHealth> heathStatus = _sheldService.Select(Health.Factory.GetServiceHealth).ToList();
 
             return heathStatus;
         }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Gozer.Contract;
-using Gozer.Core.Communication;
-using Gozer.Core.Health.Implementation;
+﻿using Gozer.Contract;
 using Gozer.Core.Health.Model;
+using Gozer.Health.Implementation;
 
-namespace Gozer.Core.Health
+namespace Gozer.Health
 {
     public class Factory
     {
