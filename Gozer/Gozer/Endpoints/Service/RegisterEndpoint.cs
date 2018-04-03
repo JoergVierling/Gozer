@@ -25,7 +25,7 @@ namespace Gozer.Endpoints.Service
 
         private readonly ILogger _logger;
         private readonly IServiceSheldManager _serviceSheldManager;
-        private readonly AuthorizeManager _authorizeManager;
+        private readonly IAuthorizeManager _authorizeManager;
 
         public RegisterEndpoint(
             ILogger<RegisterEndpoint> logger, IServiceSheldManager serviceSheldManager, IAuthorizeManager authorizeManager)
