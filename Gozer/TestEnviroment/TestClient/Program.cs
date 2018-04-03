@@ -35,7 +35,7 @@ namespace ConsoleApp1
             Thread.Sleep(2000);
 
             IClortho request = ClorthoFactory.Get("http://localhost:25723");
-            var channel = request.Get<IWcfHttpTestService>().Result;
+            var channel = request..Get<IWcfHttpTestService>().Result;
 
             var found = request.HasOne<IWcfDuplexTestService>().Result;
 
@@ -60,7 +60,7 @@ namespace ConsoleApp1
             IClortho request = ClorthoFactory.Get("http://localhost:25723", 0);
             request.ConnectionEvent += RegisterOnConnectionErrorEvent;
 
-            IWcfDuplexTestService channel = request.GetDuplex<IWcfDuplexTestService>(instanceContext).Result;
+            IWcfDuplexTestService channel = request.GetApiInformation.GetDuplex<IWcfDuplexTestService>(instanceContext).Result;
 
             if (channel != null)
             {

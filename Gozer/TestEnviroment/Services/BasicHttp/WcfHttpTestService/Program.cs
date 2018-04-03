@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using Gozer.Clortho;
 using Gozer.Contract;
@@ -12,11 +13,13 @@ namespace WcfHttpTestService1
         {
             var register = ClorthoFactory.Register("http://localhost:25723");
             register.ConnectionEvent+=RegisterOnConnectionErrorEvent;
-            
-            using (register.AddService<IWcfHttpTestService>("http://localhost:8081/Service", ServicesBinding.WebHttpBinding))
+
+            X509Certificate2 cert = new X509Certificate2(@"GozerAuth.pfx", "ZYexauNsF0zUCMVEAaGV", X509KeyStorageFlags.PersistKeySet);
+
+            using (register.AddService<IWcfHttpTestService>("http://localhost:8081/Service", ServicesBinding.WebHttpBinding, cert))
             {
-                //ServiceHost host = new ServiceHost(typeof(Service));
-                //host.Open();
+                ServiceHost host = new ServiceHost(typeof(Service));
+                host.Open();
                 Console.WriteLine("Service Hosted 1 running");
                 Console.Read();
             }

@@ -8,5 +8,7 @@ namespace Gozer.Contract.Communication
         string AssambliQualifiedName { get; set; }
         ServicesBinding binding { get; set; }
         string EndpointAdress { get; set; }
+
+        byte[] Signature { get; set; }
     }
 }

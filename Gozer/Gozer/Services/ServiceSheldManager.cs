@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Gozer.Configuration;
 using Gozer.Contract;
 using Gozer.Contract.Communication;
 using Gozer.Core;
@@ -12,19 +13,23 @@ namespace Gozer.Options
 {
     class ServiceSheldManager : IServiceSheldManager
     {
-        
+
         private readonly ILogger _logger;
         private ISheldService _sheldService;
         private IServiceSelector _serviceSelector;
 
-        public ServiceSheldManager(ILogger<IServiceSheldManager> logger, ISheldService sheldService, IServiceSelector serviceSelector)
+        private GozerServerOptions _options;
+
+        public ServiceSheldManager(ILogger<IServiceSheldManager> logger, ISheldService sheldService, IServiceSelector serviceSelector, GozerServerOptions options)
         {
             _logger = logger;
             _sheldService = sheldService;
             _serviceSelector = serviceSelector;
+
+            _options = options;
         }
 
-        public Guid AddService(IServiceDelivery serviceDelivery)
+        public Guid? AddService(IServiceDelivery serviceDelivery)
         {
             IService service = new Service(serviceDelivery);
 

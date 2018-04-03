@@ -7,7 +7,7 @@ namespace Gozer.Contract
 {
     public interface IServiceSheldManager
     {
-        Guid AddService(IServiceDelivery serviceDelivery);
+        Guid? AddService(IServiceDelivery serviceDelivery);
         void Remove(Guid guid);
         IServiceDelivery Get(string assambliQualifiedName);
 

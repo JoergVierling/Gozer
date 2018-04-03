@@ -24,8 +24,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The services.</param>
         /// <returns></returns>
-        public static IGozerServerBuilder AddGozerServer(this IServiceCollection services)
+        public static IGozerServerBuilder AddGozerServer(this IServiceCollection services, Action<GozerServerOptions> setupAction)
         {
+            services.Configure(setupAction);
             var builder = services.AddGozerServerBuilder();
 
             builder.AddRequiredPlatformServices().AddDefaultEndpoints();

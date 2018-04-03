@@ -35,6 +35,7 @@ namespace WcfDuplexTestService2
             else
             {
                 Console.WriteLine($"Fehler in der Komponente {connectionErrorEvent.Exception.Source}");
+                Console.WriteLine($"{connectionErrorEvent.Exception.Message}");
             }
         }
     }

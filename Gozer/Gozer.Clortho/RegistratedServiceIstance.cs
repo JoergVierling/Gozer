@@ -20,20 +20,23 @@ namespace Gozer.Clortho
 
         public void Dispose()
         {
-            HttpClient client = new HttpClient();
-
-            var jsonSerializerSettings = new JsonSerializerSettings()
+            if (_ack.Succed)
             {
-                TypeNameHandling = TypeNameHandling.All
-            };
+                HttpClient client = new HttpClient();
 
-            string data = JsonConvert.SerializeObject(_ack, jsonSerializerSettings);
+                var jsonSerializerSettings = new JsonSerializerSettings()
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
 
-            var path = GozerServer.BasUrl + ProtocolRoutePaths.Remove; ;
+                string data = JsonConvert.SerializeObject(_ack, jsonSerializerSettings);
 
-            var response = client.PostAsync(path, new StringContent(data)).Result;
+                var path = GozerServer.BasUrl + ProtocolRoutePaths.Remove; ;
 
-            response.EnsureSuccessStatusCode();
+                var response = client.PostAsync(path, new StringContent(data)).Result;
+
+                response.EnsureSuccessStatusCode();
+            }
         }
     }
 }

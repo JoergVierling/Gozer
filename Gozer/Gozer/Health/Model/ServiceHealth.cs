@@ -26,5 +26,6 @@ namespace Gozer.Health.Model
         public DateTime LastCall { get; set; }
         public string CpuUsage { get; set; }
         public string FreeMemory { get; set; }
+        public byte[] Signature { get; set; }
     }
 }
