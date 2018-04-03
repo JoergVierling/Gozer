@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Gozer.Options;
 using Gozer.Services;
@@ -31,7 +32,15 @@ namespace Host
                 iis.AutomaticAuthentication = false;
             });
 
-            services.AddGozerServer().AddInMemoryShelter(new ServiceSelector());
+            byte[] cert = TestHost.Properties.Resources.GozerAuth1;
+            X509Certificate2 x509 = new X509Certificate2(cert, "", X509KeyStorageFlags.PersistKeySet);
+
+            services.AddGozerServer(options =>
+            {
+                options.Secrutiy.UseCertificateForRegistration = true;
+                options.Secrutiy.x509Certificate2 = x509;
+            })
+            .AddInMemoryShelter(new ServiceSelector());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

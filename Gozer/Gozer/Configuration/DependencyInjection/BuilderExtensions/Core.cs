@@ -33,6 +33,7 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.AddOptions();
             builder.Services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<GozerServerOptions>>().Value);
             builder.Services.AddSingleton<IServiceSheldManager, ServiceSheldManager>();
+            builder.Services.AddSingleton<IAuthorizeManager, AuthorizeManager>();
 
             return builder;
         }
