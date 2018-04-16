@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+	<NuspecFile>$(SolutionDir)Nuget/$(MSBuildProjectName).nuspec</NuspecFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,12 @@
     <Reference Include="System.ServiceModel.Duplex">
       <HintPath>..\..\..\..\..\Users\Admin\.nuget\packages\system.servicemodel.duplex\4.4.1\ref\netstandard2.0\System.ServiceModel.Duplex.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="NuGet\Gozer.Contract.dll.nuspec">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
