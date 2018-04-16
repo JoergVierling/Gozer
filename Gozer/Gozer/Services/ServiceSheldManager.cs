@@ -17,7 +17,7 @@ namespace Gozer.Options
         private readonly ILogger _logger;
         private ISheldService _sheldService;
         private IServiceSelector _serviceSelector;
-
+        
         private GozerServerOptions _options;
 
         public ServiceSheldManager(ILogger<IServiceSheldManager> logger, ISheldService sheldService, IServiceSelector serviceSelector, GozerServerOptions options)
@@ -25,20 +25,15 @@ namespace Gozer.Options
             _logger = logger;
             _sheldService = sheldService;
             _serviceSelector = serviceSelector;
-
+        
             _options = options;
+
+        
         }
 
         public Guid? AddService(IServiceDelivery serviceDelivery)
         {
             IService service = new Service(serviceDelivery);
-
-            var existingService = _sheldService.FirstOrDefault(x => x.EndpointAdress.Equals(service.EndpointAdress));
-            if (existingService != null)
-            {
-                _sheldService.Remove(existingService);
-            }
-
             _sheldService.Add(service);
 
             return service.Guid;
@@ -52,7 +47,6 @@ namespace Gozer.Options
             {
                 _sheldService.Remove(service);
             }
-
         }
 
         public IServiceDelivery Get(string assambliQualifiedName)
@@ -68,6 +62,8 @@ namespace Gozer.Options
                 if (isAlive)
                 {
                     service.LastCall = DateTime.Now;
+                    _sheldService.Update(service);
+
                     delivery = new ServiceDelivery()
                     {
                         AssambliQualifiedName = service.AssambliQualifiedName,

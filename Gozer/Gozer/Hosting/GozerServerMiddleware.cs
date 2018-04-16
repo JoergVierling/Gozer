@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using Gozer.Contract;
 using Gozer.Endpoints;
+using Gozer.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
@@ -43,6 +45,8 @@ namespace Gozer.Hosting
 
                 return;
             }
+
+
 
             await _next(context);
         }

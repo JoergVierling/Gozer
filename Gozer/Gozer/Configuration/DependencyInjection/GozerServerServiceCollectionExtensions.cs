@@ -30,10 +30,18 @@ namespace Microsoft.Extensions.DependencyInjection
             var builder = services.AddGozerServerBuilder();
 
             builder.AddRequiredPlatformServices().AddDefaultEndpoints();
-            
+
             return builder;
         }
 
 
+        public static IGozerServerBuilder AddGozerServer(this IServiceCollection services)
+        {
+            var builder = services.AddGozerServerBuilder();
+
+            builder.AddRequiredPlatformServices().AddDefaultEndpoints();
+
+            return builder;
+        }
     }
 }

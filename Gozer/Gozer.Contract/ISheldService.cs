@@ -9,5 +9,6 @@ namespace Gozer.Contract
     {
         void Remove(IService service);
         void Add(IService service);
+        void Update(IService service);
     }
 }

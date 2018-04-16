@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Gozer.Contract;
 
 namespace Gozer.Services
@@ -30,6 +31,13 @@ namespace Gozer.Services
 
         public void Add(IService service)
         {
+            _service.Add(service);
+        }
+
+        public void Update(IService service)
+        {
+            _service.Remove(_service.FirstOrDefault(x => x.Guid == service.Guid));
+
             _service.Add(service);
         }
     }
