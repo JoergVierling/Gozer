@@ -36,11 +36,11 @@ namespace Host
             X509Certificate2 x509 = new X509Certificate2(cert, "", X509KeyStorageFlags.PersistKeySet);
 
             services.AddGozerServer(options =>
-            {
-                options.Secrutiy.UseCertificateForRegistration = true;
-                options.Secrutiy.x509Certificate2 = x509;
-            })
-            .AddInMemoryShelter(new ServiceSelector());
+                {
+                    options.Secrutiy.UseCertificateForRegistration = true;
+                    options.Secrutiy.x509Certificate2 = x509;
+                })
+                .AddInMemoryShelter(new ServiceSelector());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
-using Gozer.Clortho;
+using Gozer.Clortho.WCF;
 using Gozer.Contract;
 using TestClientInterfaces;
 

@@ -1,5 +1,4 @@
-﻿
-using Gozer.Contract;
+﻿using Gozer.Contract;
 
 namespace Gozer.Contract.Communication
 {

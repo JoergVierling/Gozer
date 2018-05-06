@@ -2,6 +2,7 @@
 using System.ServiceModel;
 using System.Threading;
 using Gozer.Clortho;
+using Gozer.Clortho.WCF;
 using Gozer.Contract;
 using Gozer.Contract.Communication;
 using TestClientInterfaces;

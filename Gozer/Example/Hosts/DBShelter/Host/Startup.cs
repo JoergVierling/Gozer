@@ -35,8 +35,9 @@ namespace Host
                 iis.AutomaticAuthentication = false;
             });
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=ShelterContext;Trusted_Connection=True;ConnectRetryCount=0";
-            var option= new DbContextOptionsBuilder<ShelterContext>().UseSqlServer(connection).Options;
+            var connection =
+                @"Server=(localdb)\mssqllocaldb;Database=ShelterContext;Trusted_Connection=True;ConnectRetryCount=0";
+            var option = new DbContextOptionsBuilder<ShelterContext>().UseSqlServer(connection).Options;
             var context = new ShelterContext(option);
             ISheldService shelter = new DbShelter(context);
 

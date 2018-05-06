@@ -17,7 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="builder">The builder.</param>
         /// <returns></returns>
-        public static IGozerServerBuilder AddCustomShelter(this IGozerServerBuilder builder,ISheldService sheldService)
+        public static IGozerServerBuilder AddCustomShelter(this IGozerServerBuilder builder, ISheldService sheldService)
         {
             builder.Services.TryAddSingleton(sheldService);
             builder.Services.TryAddTransient(typeof(IServiceSheldManager), typeof(ServiceSheldManager));
@@ -25,7 +25,8 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IGozerServerBuilder AddCustomShelter(this IGozerServerBuilder builder, ISheldService sheldService, IServiceSelector serviceSelector)
+        public static IGozerServerBuilder AddCustomShelter(this IGozerServerBuilder builder, ISheldService sheldService,
+            IServiceSelector serviceSelector)
         {
             builder.Services.TryAddSingleton(sheldService);
             builder.Services.AddSingleton(serviceSelector);

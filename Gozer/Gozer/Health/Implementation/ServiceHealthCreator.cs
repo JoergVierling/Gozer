@@ -1,15 +1,13 @@
 ﻿using Gozer.Contract;
-using Gozer.Core.Health.Model;
 using Gozer.Health.Model;
-
 
 namespace Gozer.Health.Implementation
 {
     public class ServiceHealthCreator
     {
-        private readonly ServiceHealthFunctions _srcFunctions;
+        private readonly IServiceHealthFunctions _srcFunctions;
 
-        public ServiceHealthCreator(ServiceHealthFunctions serviceHealthFunctions)
+        public ServiceHealthCreator(IServiceHealthFunctions serviceHealthFunctions)
         {
             _srcFunctions = serviceHealthFunctions;
         }

@@ -6,7 +6,6 @@ using Gozer.Contract;
 using Gozer.Endpoints;
 using Gozer.Endpoints.Service;
 using Gozer.Hosting;
-
 using Gozer.Core;
 using Gozer.Options;
 using Gozer.Services;
@@ -27,7 +26,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddOptions();
-            builder.Services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<GozerServerOptions>>().Value);
+            builder.Services.AddSingleton(resolver =>
+                resolver.GetRequiredService<IOptions<GozerServerOptions>>().Value);
             builder.Services.AddSingleton<IServiceSheldManager, ServiceSheldManager>();
             builder.Services.AddSingleton<IAuthorizeManager, AuthorizeManager>();
 

@@ -32,7 +32,7 @@ namespace WcfHttpTestService1
 
         public string GetMemLoad()
         {
-            var cpuCounter =new PerformanceCounter("Memory", "Available MBytes", null);
+            var cpuCounter = new PerformanceCounter("Memory", "Available MBytes", null);
 
             return cpuCounter.NextValue() + "MB";
         }

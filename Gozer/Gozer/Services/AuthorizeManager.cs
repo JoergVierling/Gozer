@@ -13,7 +13,6 @@ namespace Gozer.Services
 {
     public class AuthorizeManager : IAuthorizeManager
     {
-
         private readonly ILogger _logger;
         private readonly GozerServerOptions _options;
 
@@ -32,7 +31,8 @@ namespace Gozer.Services
                 using (RSA rsa = _options.Secrutiy.x509Certificate2.GetRSAPublicKey())
                 {
                     var endpointBytes = ASCIIEncoding.ASCII.GetBytes(serviceRegister.EndpointAdress);
-                    isValid = rsa.VerifyData(endpointBytes, serviceRegister.Signature, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
+                    isValid = rsa.VerifyData(endpointBytes, serviceRegister.Signature, HashAlgorithmName.SHA1,
+                        RSASignaturePadding.Pkcs1);
                 }
             }
 

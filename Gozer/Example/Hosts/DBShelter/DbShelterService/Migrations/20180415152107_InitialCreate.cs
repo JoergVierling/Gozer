@@ -18,10 +18,7 @@ namespace DbShelterService.Migrations
                     EndpointAdress = table.Column<string>(nullable: true),
                     LastCall = table.Column<DateTime>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Service", x => x.Guid);
-                });
+                constraints: table => { table.PrimaryKey("PK_Service", x => x.Guid); });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

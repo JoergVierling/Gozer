@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using Gozer.Clortho;
+using Gozer.Clortho.WCF;
 using Gozer.Contract;
 using TestClientInterfaces;
 

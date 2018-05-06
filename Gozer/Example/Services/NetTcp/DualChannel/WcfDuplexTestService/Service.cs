@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
 using System.ServiceModel;
+using Gozer.Clortho.WCF.Services;
+using Gozer.Core.Health.DefaultImplementation;
 using TestClientInterfaces;
 
 namespace WcfDuplexTestService2
 {
-    public class Service : IWcfDuplexTestService
+    public class Service : BaseService, IWcfDuplexTestService
     {
         public string GetMeldung()
         {
@@ -18,26 +20,8 @@ namespace WcfDuplexTestService2
             
         }
 
-        public bool IsAlive()
+        public Service() : base(new HealthClient())
         {
-            return true;
-        }
-
-        public string GetCpuLoad()
-        {
-            var cpuCounter = new PerformanceCounter();
-            cpuCounter.CategoryName = "Processor";
-            cpuCounter.CounterName = "% Processor Time";
-            cpuCounter.InstanceName = "_Total";
-
-            return cpuCounter.NextValue() + "%";
-        }
-
-        public string GetMemLoad()
-        {
-            var cpuCounter = new PerformanceCounter("Memory", "Available MBytes", null);
-
-            return cpuCounter.NextValue() + "MB";
         }
     }
 }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Gozer.Endpoints.Manager
 {
-    internal class ServiceResultManager<T> :IEndpointManager
+    internal class ServiceResultManager<T> : IEndpointManager
     {
         private T _result;
 

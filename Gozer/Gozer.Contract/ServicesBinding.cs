@@ -3,6 +3,7 @@
     public enum ServicesBinding
     {
         WebHttpBinding,
-        NetTcpBinding
+        NetTcpBinding,
+        WebApi
     }
 }

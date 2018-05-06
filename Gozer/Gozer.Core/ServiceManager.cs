@@ -49,14 +49,14 @@ namespace Gozer.Core
             var maxWaitTime = new TimeSpan(0, 0, _maxConnectionTime, 0);
 
             (bool Found, IServiceDelivery ServiceInformation) serviceResult = (false, null);
-            
+
             HttpResponseMessage response = null;
             do
             {
                 try
                 {
                     response = await client.PostAsync(path, new StringContent(data));
-                    
+
                     ConnectionEvent?.Invoke(this, new ConnectionStatusChangedEvent(isConnected: true));
                 }
                 catch (Exception e)
@@ -65,7 +65,6 @@ namespace Gozer.Core
                 }
 
                 Thread.Sleep(500);
-
             } while (response?.StatusCode != HttpStatusCode.OK && sp.Elapsed <= maxWaitTime);
 
             sp.Stop();
@@ -91,7 +90,7 @@ namespace Gozer.Core
 
                 serviceResult.ServiceInformation = element;
             }
-            
+
 
             return serviceResult;
         }
@@ -99,7 +98,6 @@ namespace Gozer.Core
         public T GetChannel(ServicesBinding usedBinding, string endpoint)
         {
             Binding binding = GetBinding(usedBinding);
-
 
             //Create EndPoint address  
             EndpointAddress endpointAddress = new EndpointAddress(endpoint);
@@ -136,7 +134,6 @@ namespace Gozer.Core
 
             switch (usedBinding)
             {
-
                 case ServicesBinding.WebHttpBinding:
                     binding = new BasicHttpBinding();
                     break;

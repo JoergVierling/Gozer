@@ -14,6 +14,6 @@ namespace Gozer.Endpoints
         /// </summary>
         /// <param name="context">The HTTP context.</param>
         /// <returns></returns>
-       IEndpointManager Process(HttpContext context);
+        IEndpointManager Process(HttpContext context);
     }
 }

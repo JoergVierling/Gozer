@@ -15,7 +15,6 @@ namespace WcfDuplexTestService1
             sp.Stop();
             callback.ReturnRuntime(sp.Elapsed.ToString());
             return "Hello World Net Tcp 1";
-
         }
 
         public bool IsAlive()

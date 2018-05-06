@@ -22,22 +22,22 @@ namespace DbShelterService.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("DbShelterImplementation.Service", b =>
-                {
-                    b.Property<Guid>("Guid")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<Guid>("Guid")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AssambliQualifiedName");
+                b.Property<string>("AssambliQualifiedName");
 
-                    b.Property<int>("Binding");
+                b.Property<int>("Binding");
 
-                    b.Property<string>("EndpointAdress");
+                b.Property<string>("EndpointAdress");
 
-                    b.Property<DateTime>("LastCall");
+                b.Property<DateTime>("LastCall");
 
-                    b.HasKey("Guid");
+                b.HasKey("Guid");
 
-                    b.ToTable("Service");
-                });
+                b.ToTable("Service");
+            });
 #pragma warning restore 612, 618
         }
     }

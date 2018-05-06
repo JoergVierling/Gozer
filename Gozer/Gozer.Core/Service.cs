@@ -17,7 +17,8 @@ namespace Gozer.Core
         public DateTime LastCall { get; set; }
 
 
-        public Service(IServiceDelivery serviceDelivery) : this(serviceDelivery.AssambliQualifiedName, serviceDelivery.binding, serviceDelivery.EndpointAdress)
+        public Service(IServiceDelivery serviceDelivery) : this(serviceDelivery.AssambliQualifiedName,
+            serviceDelivery.binding, serviceDelivery.EndpointAdress)
         {
         }
 

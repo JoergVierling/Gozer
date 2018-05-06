@@ -11,7 +11,11 @@ namespace Gozer.Contract
     public interface IClorthoRegister
     {
         event EventHandler<IConnectionStatusChangedEvent> ConnectionEvent;
-        Task<IRegistratedServiceIstance> AddService<T>(string endpoint, ServicesBinding binding) where T : IServicesHealthConnection;
-        Task<IRegistratedServiceIstance> AddService<T>(string endpoint, ServicesBinding binding, X509Certificate2 cert) where T : IServicesHealthConnection;
+
+        Task<IRegistratedServiceIstance> AddService<T>(string endpoint, ServicesBinding binding)
+            where T : IServicesHealthConnection;
+
+        Task<IRegistratedServiceIstance> AddService<T>(string endpoint, ServicesBinding binding, X509Certificate2 cert)
+            where T : IServicesHealthConnection;
     }
 }

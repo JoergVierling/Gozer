@@ -7,9 +7,9 @@ namespace Gozer.Options
 {
     public class ServiceHolding
     {
-        public int ServiceWatchTimeIntervall{ get; set; }
+        public int ServiceWatchTimeIntervall { get; set; }
         public int SecondChanceTimeIntervall { get; set; }
-     
+
         public ServiceHolding()
         {
             ServiceWatchTimeIntervall = 100;

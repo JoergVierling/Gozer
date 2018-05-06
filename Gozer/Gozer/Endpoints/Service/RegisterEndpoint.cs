@@ -22,13 +22,13 @@ namespace Gozer.Endpoints.Service
 {
     internal class RegisterEndpoint : IEndpointHandler
     {
-
         private readonly ILogger _logger;
         private readonly IServiceSheldManager _serviceSheldManager;
         private readonly IAuthorizeManager _authorizeManager;
 
         public RegisterEndpoint(
-            ILogger<RegisterEndpoint> logger, IServiceSheldManager serviceSheldManager, IAuthorizeManager authorizeManager)
+            ILogger<RegisterEndpoint> logger, IServiceSheldManager serviceSheldManager,
+            IAuthorizeManager authorizeManager)
         {
             _logger = logger;
             _serviceSheldManager = serviceSheldManager;
@@ -51,7 +51,8 @@ namespace Gozer.Endpoints.Service
                 TypeNameHandling = TypeNameHandling.All
             };
 
-            IServiceDelivery serviceRegister = JsonConvert.DeserializeObject<IServiceDelivery>(requestFromPost, jsonSerializerSettings);
+            IServiceDelivery serviceRegister =
+                JsonConvert.DeserializeObject<IServiceDelivery>(requestFromPost, jsonSerializerSettings);
             IServiceRegistrationAck ack = null;
 
             if (!_authorizeManager.IsSignitureValid(serviceRegister))
@@ -100,5 +101,4 @@ namespace Gozer.Endpoints.Service
             return new ServiceResultManager<IServiceRegistrationAck>(ack);
         }
     }
-
 }

@@ -1,6 +1,8 @@
-﻿using Gozer.Contract;
+﻿using System.ComponentModel.Design;
+using Gozer.Contract;
 using Gozer.Core.Health.Model;
 using Gozer.Health.Implementation;
+using ServiceHealthCreator = Gozer.Health.Implementation.ServiceHealthCreator;
 
 namespace Gozer.Health
 {
@@ -8,13 +10,33 @@ namespace Gozer.Health
     {
         public static bool IsServiceAlive(IService src)
         {
-            var serviceHealthFuncitons = new ServiceHealthFunctions(src.Binding, src.EndpointAdress);
+            IServiceHealthFunctions serviceHealthFuncitons ;
+            switch (src.Binding)
+            {
+                case ServicesBinding.WebApi:
+                    serviceHealthFuncitons = new ServiceHealthFunctionsWebApi(src.EndpointAdress);
+                    break;
+                default:
+                    serviceHealthFuncitons = new ServiceHealthFunctionsWcf(src.Binding, src.EndpointAdress);
+                    break;
+
+            }
+
             return serviceHealthFuncitons.IsServiceAlive();
         }
 
         public static IServiceHealth GetServiceHealth(IService src)
         {
-            var serviceHealthFuncitons = new ServiceHealthFunctions(src.Binding, src.EndpointAdress);
+            IServiceHealthFunctions serviceHealthFuncitons;
+            switch (src.Binding)
+            {
+                case ServicesBinding.WebApi:
+                    serviceHealthFuncitons = new ServiceHealthFunctionsWebApi(src.EndpointAdress);
+                    break;
+                default:
+                    serviceHealthFuncitons = new ServiceHealthFunctionsWcf(src.Binding, src.EndpointAdress);
+                    break;
+            }
 
             var srcHealthCreator = new ServiceHealthCreator(serviceHealthFuncitons);
 

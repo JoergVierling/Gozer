@@ -10,18 +10,18 @@ using Microsoft.Extensions.Configuration;
 
 namespace DbShelterService
 {
-
-        public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ShelterContext>
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ShelterContext>
+    {
+        public ShelterContext CreateDbContext(string[] args)
         {
-            public ShelterContext CreateDbContext(string[] args)
-            {
-                var builder = new DbContextOptionsBuilder<ShelterContext>();
+            var builder = new DbContextOptionsBuilder<ShelterContext>();
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=ShelterContext;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection =
+                @"Server=(localdb)\mssqllocaldb;Database=ShelterContext;Trusted_Connection=True;ConnectRetryCount=0";
 
             builder.UseSqlServer(connection);
 
-                return new ShelterContext(builder.Options);
-            }
+            return new ShelterContext(builder.Options);
+        }
     }
 }

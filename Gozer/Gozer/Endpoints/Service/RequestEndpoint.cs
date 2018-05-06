@@ -18,7 +18,6 @@ namespace Gozer.Endpoints.Service
 {
     internal class RequestEndpoint : IEndpointHandler
     {
-
         private readonly ILogger _logger;
         private readonly IServiceSheldManager _serviceSheldManager;
 
@@ -45,7 +44,8 @@ namespace Gozer.Endpoints.Service
                 TypeNameHandling = TypeNameHandling.All
             };
 
-            IServiceRequest servicerequest = JsonConvert.DeserializeObject<IServiceRequest>(requestFromPost, jsonSerializerSettings);
+            IServiceRequest servicerequest =
+                JsonConvert.DeserializeObject<IServiceRequest>(requestFromPost, jsonSerializerSettings);
 
             if (servicerequest != null)
             {
@@ -59,6 +59,5 @@ namespace Gozer.Endpoints.Service
 
             return new StatusCodeResult(HttpStatusCode.NotFound);
         }
-
     }
 }

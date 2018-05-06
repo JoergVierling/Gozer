@@ -12,4 +12,3 @@ namespace DbShelterService
         public DateTime LastCall { get; set; }
     }
 }
-

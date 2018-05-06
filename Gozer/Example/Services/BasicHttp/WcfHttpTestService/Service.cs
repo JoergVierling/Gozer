@@ -8,7 +8,7 @@ using TestClientInterfaces;
 
 namespace WcfHttpTestService2
 {
-    public class Service: IWcfHttpTestService
+    public class Service : IWcfHttpTestService
     {
         public string GetMeldung()
         {
@@ -22,7 +22,7 @@ namespace WcfHttpTestService2
 
         public string GetCpuLoad()
         {
-           var cpuCounter = new PerformanceCounter();
+            var cpuCounter = new PerformanceCounter();
             cpuCounter.CategoryName = "Processor";
             cpuCounter.CounterName = "% Processor Time";
             cpuCounter.InstanceName = "_Total";

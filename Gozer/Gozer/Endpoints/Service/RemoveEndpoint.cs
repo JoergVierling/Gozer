@@ -18,7 +18,6 @@ namespace Gozer.Endpoints.Service
 {
     internal class RemoveEndpoint : IEndpointHandler
     {
-
         private readonly ILogger _logger;
         private readonly IServiceSheldManager _serviceSheldManager;
 
@@ -45,7 +44,8 @@ namespace Gozer.Endpoints.Service
                 TypeNameHandling = TypeNameHandling.All
             };
 
-            IServiceRegistrationAck serviceDelivery = JsonConvert.DeserializeObject<IServiceRegistrationAck>(requestFromPost, jsonSerializerSettings);
+            IServiceRegistrationAck serviceDelivery =
+                JsonConvert.DeserializeObject<IServiceRegistrationAck>(requestFromPost, jsonSerializerSettings);
 
             HttpStatusCode httpStatus = HttpStatusCode.NotFound;
 

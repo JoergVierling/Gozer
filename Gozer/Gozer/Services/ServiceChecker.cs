@@ -6,7 +6,9 @@ using System.Timers;
 using Gozer.Configuration;
 using Gozer.Contract;
 using Gozer.Core;
+using Gozer.Core.Health;
 using JetBrains.Annotations;
+using Factory = Gozer.Health.Factory;
 
 namespace Gozer.Services
 {
@@ -82,7 +84,7 @@ namespace Gozer.Services
 
         public static bool IsAlive([NotNull] IService service)
         {
-            return Health.Factory.IsServiceAlive(service);
+            return Factory.IsServiceAlive(service);
         }
     }
 }

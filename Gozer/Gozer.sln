@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DualChannel", "DualChannel"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rest", "Rest", "{29CC95A0-DC8E-4CDB-8C43-D84D170991DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gozer.Clortho", "Gozer.Clortho\Gozer.Clortho.csproj", "{56EE10AC-8C57-403A-8E35-B831ADFCFF48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gozer.Clortho.WCF", "Gozer.Clortho.WCF\Gozer.Clortho.WCF.csproj", "{56EE10AC-8C57-403A-8E35-B831ADFCFF48}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Key", "Key", "{C4A25D77-7043-4507-B482-49BBBE938A6B}"
 	ProjectSection(SolutionItems) = preProject
@@ -69,11 +69,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbShelter", "DbShelter", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "Example\Hosts\DBShelter\Host\Host.csproj", "{CEA09391-5C5B-48AF-A043-48A308E94C57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbShelterService", "Example\Hosts\DBShelter\DbShelterService\DbShelterService.csproj", "{D0CAC823-70F9-40A3-8B65-FA0CCB06D348}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbShelterService", "Example\Hosts\DBShelter\DbShelterService\DbShelterService.csproj", "{D0CAC823-70F9-40A3-8B65-FA0CCB06D348}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestClient", "TestClient", "{E0A7179F-1086-4D5B-A19B-B3B1D09C856B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestClient", "Example\TestClient\TestClient.csproj", "{2C8E01B9-284B-4A65-99A0-87534347C6B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gozer.Clortho.WebApi.Core", "Gozer.Clortho.WebApi.Core\Gozer.Clortho.WebApi.Core.csproj", "{E18D3B16-AFE9-4E37-8584-2F132FD96829}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gozer.Clortho.WebApi", "Gozer.Clortho.WebApi\Gozer.Clortho.WebApi.csproj", "{A5F56C2C-171D-409A-8402-00DF6E7FDF81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +157,14 @@ Global
 		{2C8E01B9-284B-4A65-99A0-87534347C6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C8E01B9-284B-4A65-99A0-87534347C6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C8E01B9-284B-4A65-99A0-87534347C6B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E18D3B16-AFE9-4E37-8584-2F132FD96829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E18D3B16-AFE9-4E37-8584-2F132FD96829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E18D3B16-AFE9-4E37-8584-2F132FD96829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E18D3B16-AFE9-4E37-8584-2F132FD96829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F56C2C-171D-409A-8402-00DF6E7FDF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F56C2C-171D-409A-8402-00DF6E7FDF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F56C2C-171D-409A-8402-00DF6E7FDF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F56C2C-171D-409A-8402-00DF6E7FDF81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

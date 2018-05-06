@@ -28,7 +28,7 @@ namespace Gozer.Endpoints.Results
         /// <param name="statusCode">The status code.</param>
         public StatusCodeResult(HttpStatusCode statusCode)
         {
-            StatusCode = (int)statusCode;
+            StatusCode = (int) statusCode;
         }
 
         /// <summary>

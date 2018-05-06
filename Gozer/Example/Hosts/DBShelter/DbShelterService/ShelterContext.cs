@@ -14,11 +14,8 @@ namespace DbShelterService
             base.OnModelCreating(builder);
 
             builder.Entity<Service>(config => { config.HasKey(x => x.Guid); });
-
         }
 
         public DbSet<Service> Service { get; set; }
     }
-
 }
-

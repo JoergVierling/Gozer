@@ -34,11 +34,11 @@ namespace Host
 
 
             services.AddGozerServer(options =>
-            {
-                options.Secrutiy.UseCertificateForRegistration = false;
-                options.Secrutiy.AllowedHosts = new List<string> { "localhost" };
-            })
-            .AddInMemoryShelter(new ServiceSelector());
+                {
+                    options.Secrutiy.UseCertificateForRegistration = false;
+                    options.Secrutiy.AllowedHosts = new List<string> {"localhost"};
+                })
+                .AddInMemoryShelter(new ServiceSelector());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

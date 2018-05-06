@@ -6,29 +6,29 @@ using Gozer.Contract;
 using Gozer.Contract.Communication;
 using Gozer.Core;
 using Gozer.Core.Communication;
+using Gozer.Core.Health;
 using Gozer.Core.Health.Model;
 using Microsoft.Extensions.Logging;
+using Factory = Gozer.Health.Factory;
 
 namespace Gozer.Options
 {
     class ServiceSheldManager : IServiceSheldManager
     {
-
         private readonly ILogger _logger;
         private ISheldService _sheldService;
         private IServiceSelector _serviceSelector;
-        
+
         private GozerServerOptions _options;
 
-        public ServiceSheldManager(ILogger<IServiceSheldManager> logger, ISheldService sheldService, IServiceSelector serviceSelector, GozerServerOptions options)
+        public ServiceSheldManager(ILogger<IServiceSheldManager> logger, ISheldService sheldService,
+            IServiceSelector serviceSelector, GozerServerOptions options)
         {
             _logger = logger;
             _sheldService = sheldService;
             _serviceSelector = serviceSelector;
-        
-            _options = options;
 
-        
+            _options = options;
         }
 
         public Guid? AddService(IServiceDelivery serviceDelivery)
@@ -57,7 +57,7 @@ namespace Gozer.Options
 
             if (service != null)
             {
-                var isAlive = Health.Factory.IsServiceAlive(service);
+                var isAlive = Factory.IsServiceAlive(service);
 
                 if (isAlive)
                 {
@@ -89,7 +89,7 @@ namespace Gozer.Options
 
         public List<IServiceHealth> GetInventur()
         {
-            List<IServiceHealth> heathStatus = _sheldService.Select(Health.Factory.GetServiceHealth).ToList();
+            List<IServiceHealth> heathStatus = _sheldService.Select(Factory.GetServiceHealth).ToList();
 
             return heathStatus;
         }

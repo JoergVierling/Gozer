@@ -25,7 +25,8 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IGozerServerBuilder AddInMemoryShelter(this IGozerServerBuilder builder,IServiceSelector serviceSelector)
+        public static IGozerServerBuilder AddInMemoryShelter(this IGozerServerBuilder builder,
+            IServiceSelector serviceSelector)
         {
             builder.Services.TryAddSingleton<ISheldService, InMemoryShelter>();
             builder.Services.TryAddSingleton(serviceSelector);

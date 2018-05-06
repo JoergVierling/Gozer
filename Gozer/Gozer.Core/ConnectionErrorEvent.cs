@@ -19,9 +19,5 @@ namespace Gozer.Core
         {
             Exception = exception;
         }
-
-    
     }
 }
-
-
