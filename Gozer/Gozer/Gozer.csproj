@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Gozer.Core.Wcf\Gozer.Core.Wcf.csproj" />
     <ProjectReference Include="..\Gozer.Core\Gozer.Core.csproj" />
   </ItemGroup>
 

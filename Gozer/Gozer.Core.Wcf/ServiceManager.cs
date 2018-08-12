@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
@@ -12,7 +11,7 @@ using Gozer.Contract.Communication;
 using Gozer.Core.Communication;
 using Newtonsoft.Json;
 
-namespace Gozer.Core
+namespace Gozer.Core.Wcf
 {
     public class ServiceManager<T>
     {

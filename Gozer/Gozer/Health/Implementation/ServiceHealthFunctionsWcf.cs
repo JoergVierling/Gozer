@@ -2,6 +2,7 @@
 using Gozer.Contract;
 using Gozer.Contract.Health;
 using Gozer.Core;
+using Gozer.Core.Wcf;
 
 namespace Gozer.Health.Implementation
 {

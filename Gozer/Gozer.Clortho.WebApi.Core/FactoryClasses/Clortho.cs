@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Gozer.Contract;
 using Gozer.Contract.Communication;
 using Gozer.Core;
+using Gozer.Core.Wcf;
 
 namespace Gozer.Clortho.WebApi.Core.FactoryClasses
 {
