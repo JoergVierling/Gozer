@@ -78,7 +78,7 @@ namespace ConsoleApp1
             Console.WriteLine("ShowApiInformation");
             Console.WriteLine($"Type: {type}");
             Console.WriteLine($"EndpointAdress: {serviceDelivery.EndpointAdress}");
-            Console.WriteLine($"Binding: {serviceDelivery.binding}");
+            Console.WriteLine($"Binding: {serviceDelivery.Binding}");
         }
         private static void RegisterOnConnectionErrorEvent(object sender, IConnectionStatusChangedEvent connectionErrorEvent)
         {

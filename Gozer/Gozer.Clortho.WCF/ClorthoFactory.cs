@@ -1,5 +1,6 @@
 ﻿using Gozer.Clortho.WCF.FactoryClasses;
 using Gozer.Contract;
+using Gozer.Core;
 
 namespace Gozer.Clortho.WCF
 {

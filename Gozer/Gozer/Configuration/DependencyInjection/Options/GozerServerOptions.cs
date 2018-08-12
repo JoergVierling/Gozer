@@ -1,9 +1,7 @@
-﻿using Gozer.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using Gozer.Options;
 
-namespace Gozer.Configuration
+namespace Gozer.Configuration.DependencyInjection.Options
 {
     public class GozerServerOptions
     {

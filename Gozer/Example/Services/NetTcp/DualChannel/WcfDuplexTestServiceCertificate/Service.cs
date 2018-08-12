@@ -22,21 +22,5 @@ namespace WcfDuplexTestService1
             return true;
         }
 
-        public string GetCpuLoad()
-        {
-            var cpuCounter = new PerformanceCounter();
-            cpuCounter.CategoryName = "Processor";
-            cpuCounter.CounterName = "% Processor Time";
-            cpuCounter.InstanceName = "_Total";
-
-            return cpuCounter.NextValue() + "%";
-        }
-
-        public string GetMemLoad()
-        {
-            var cpuCounter = new PerformanceCounter("Memory", "Available MBytes", null);
-
-            return cpuCounter.NextValue() + "MB";
-        }
     }
 }

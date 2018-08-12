@@ -1,6 +1,6 @@
 ﻿using Gozer.Contract;
 
-namespace Gozer.Clortho
+namespace Gozer.Core
 {
     public class GozerServer : IGozerServer
     {

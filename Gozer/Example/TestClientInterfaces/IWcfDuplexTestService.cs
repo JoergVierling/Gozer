@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel;
+using Gozer.Contract.Health;
 using Gozer.Core;
-using Gozer.Core.Health.Contract;
 
 namespace TestClientInterfaces
 {

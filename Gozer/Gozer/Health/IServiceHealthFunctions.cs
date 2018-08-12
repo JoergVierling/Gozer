@@ -1,9 +1,7 @@
-﻿namespace Gozer.Health.Implementation
+﻿namespace Gozer.Health
 {
     public interface IServiceHealthFunctions
     {
         bool IsServiceAlive();
-        string GetCpuUsage();
-        string GetMemUsage();
     }
 }

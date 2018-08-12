@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Gozer.Configuration.DependencyInjection.Options;
 using Gozer.Contract;
 
 namespace Gozer.Services

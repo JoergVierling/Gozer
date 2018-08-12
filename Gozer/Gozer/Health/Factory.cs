@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.Design;
 using Gozer.Contract;
-using Gozer.Core.Health.Model;
+using Gozer.Contract.Health;
 using Gozer.Health.Implementation;
 using ServiceHealthCreator = Gozer.Health.Implementation.ServiceHealthCreator;
 
@@ -19,7 +19,6 @@ namespace Gozer.Health
                 default:
                     serviceHealthFuncitons = new ServiceHealthFunctionsWcf(src.Binding, src.EndpointAdress);
                     break;
-
             }
 
             return serviceHealthFuncitons.IsServiceAlive();

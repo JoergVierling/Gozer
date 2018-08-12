@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Gozer.Contract.Communication;
-using Gozer.Core.Health.Model;
+using Gozer.Contract.Health;
 
 namespace Gozer.Core.Communication
 {

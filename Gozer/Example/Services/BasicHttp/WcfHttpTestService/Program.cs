@@ -3,6 +3,7 @@ using System.ServiceModel;
 using Gozer.Clortho.WCF;
 using Gozer.Contract;
 using TestClientInterfaces;
+using WcfHttpTestService;
 
 namespace WcfHttpTestService2
 {

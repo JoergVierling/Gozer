@@ -18,7 +18,7 @@ namespace Gozer.Core
 
 
         public Service(IServiceDelivery serviceDelivery) : this(serviceDelivery.AssambliQualifiedName,
-            serviceDelivery.binding, serviceDelivery.EndpointAdress)
+            serviceDelivery.Binding, serviceDelivery.EndpointAdress)
         {
         }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.Text;
-using Gozer.Core.Health.Contract;
+using Gozer.Contract.Health;
 
 namespace TestClientInterfaces
 {

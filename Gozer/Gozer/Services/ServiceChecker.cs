@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Timers;
-using Gozer.Configuration;
+using Gozer.Configuration.DependencyInjection.Options;
 using Gozer.Contract;
-using Gozer.Core;
-using Gozer.Core.Health;
 using JetBrains.Annotations;
 using Factory = Gozer.Health.Factory;
 

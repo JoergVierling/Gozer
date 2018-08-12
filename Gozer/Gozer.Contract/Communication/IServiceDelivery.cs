@@ -1,13 +1,10 @@
-﻿using Gozer.Contract;
-
-namespace Gozer.Contract.Communication
+﻿namespace Gozer.Contract.Communication
 {
     public interface IServiceDelivery
     {
         string AssambliQualifiedName { get; set; }
-        ServicesBinding binding { get; set; }
+        ServicesBinding Binding { get; set; }
         string EndpointAdress { get; set; }
-
         byte[] Signature { get; set; }
     }
 }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Gozer.Contract.Health;
-using Gozer.Core.Health.Contract;
-using Gozer.Core.Health.Model;
 
 namespace Gozer.Clortho.WCF.Services
 {
@@ -19,16 +17,6 @@ namespace Gozer.Clortho.WCF.Services
         public bool IsAlive()
         {
             return _healthClient.IsAlive();
-        }
-
-        public string GetCpuLoad()
-        {
-            return _healthClient.GetCpuLoad();
-        }
-
-        public string GetMemLoad()
-        {
-            return _healthClient.GetMemLoad();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Gozer.Contract.Communication;
-using Gozer.Core.Health.Model;
+using Gozer.Contract.Health;
 
 namespace Gozer.Contract
 {

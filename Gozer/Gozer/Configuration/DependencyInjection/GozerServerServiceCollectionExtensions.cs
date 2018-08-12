@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
 using Gozer.Configuration;
+using Gozer.Configuration.DependencyInjection.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;

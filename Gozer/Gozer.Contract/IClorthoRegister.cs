@@ -1,10 +1,7 @@
 ﻿using System;
-using System.ServiceModel;
 using System.Threading.Tasks;
-using Gozer.Contract.Communication;
-using Gozer.Core.Health.Contract;
-using Gozer.Contract;
 using System.Security.Cryptography.X509Certificates;
+using Gozer.Contract.Health;
 
 namespace Gozer.Contract
 {

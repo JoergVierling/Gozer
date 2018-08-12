@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Gozer.Core.Health.Model;
+using Gozer.Contract.Health;
 
 namespace Gozer.Contract.Communication
 {

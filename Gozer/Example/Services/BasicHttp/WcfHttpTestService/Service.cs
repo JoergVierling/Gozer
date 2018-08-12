@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestClientInterfaces;
+﻿using TestClientInterfaces;
 
-namespace WcfHttpTestService2
+namespace WcfHttpTestService
 {
     public class Service : IWcfHttpTestService
     {
@@ -18,23 +12,6 @@ namespace WcfHttpTestService2
         public bool IsAlive()
         {
             return true;
-        }
-
-        public string GetCpuLoad()
-        {
-            var cpuCounter = new PerformanceCounter();
-            cpuCounter.CategoryName = "Processor";
-            cpuCounter.CounterName = "% Processor Time";
-            cpuCounter.InstanceName = "_Total";
-
-            return cpuCounter.NextValue() + "%";
-        }
-
-        public string GetMemLoad()
-        {
-            var cpuCounter = new PerformanceCounter("Memory", "Available MBytes", null);
-
-            return cpuCounter.NextValue() + "MB";
         }
     }
 }

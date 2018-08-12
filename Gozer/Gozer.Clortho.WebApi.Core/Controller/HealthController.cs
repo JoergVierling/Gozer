@@ -23,17 +23,5 @@ namespace Gozer.Clortho.WebApi.Core.Controller
         {
             return Json(_healthClient.IsAlive());
         }
-
-        [Route("CpuLoad")]
-        public IHttpActionResult GetCpu()
-        {
-            return Json(_healthClient.GetCpuLoad());
-        }
-
-        [Route("MemLoad")]
-        public IHttpActionResult IsMem()
-        {
-            return Json(_healthClient.GetMemLoad());
-        }
     }
 }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Gozer.Configuration;
+using Gozer.Configuration.DependencyInjection.Options;
 using Gozer.Contract;
 using Gozer.Contract.Communication;
+using Gozer.Contract.Health;
 using Gozer.Core;
 using Gozer.Core.Communication;
 using Gozer.Core.Health;
-using Gozer.Core.Health.Model;
 using Microsoft.Extensions.Logging;
 using Factory = Gozer.Health.Factory;
 
@@ -68,7 +69,7 @@ namespace Gozer.Options
                     {
                         AssambliQualifiedName = service.AssambliQualifiedName,
                         EndpointAdress = service.EndpointAdress,
-                        binding = service.Binding
+                        Binding = service.Binding
                     };
                 }
                 else

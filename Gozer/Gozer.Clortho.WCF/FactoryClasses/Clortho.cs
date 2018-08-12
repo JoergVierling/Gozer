@@ -29,7 +29,7 @@ namespace Gozer.Clortho.WCF.FactoryClasses
             if (serviceTuple.Found)
             {
                 IServiceDelivery service = serviceTuple.ServiceInformation;
-                channel = svcManager.GetChannel(service.binding, service.EndpointAdress);
+                channel = svcManager.GetChannel(service.Binding, service.EndpointAdress);
             }
 
             return channel;
@@ -46,7 +46,7 @@ namespace Gozer.Clortho.WCF.FactoryClasses
             if (serviceTuple.Found)
             {
                 IServiceDelivery service = serviceTuple.ServiceInformation;
-                channel = svcManager.GetChannel(service.binding, service.EndpointAdress, callback);
+                channel = svcManager.GetChannel(service.Binding, service.EndpointAdress, callback);
             }
 
             return channel;

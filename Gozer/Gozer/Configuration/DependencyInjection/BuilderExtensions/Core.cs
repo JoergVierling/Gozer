@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Gozer.Configuration;
+using Gozer.Configuration.DependencyInjection.Options;
 using Gozer.Contract;
 using Gozer.Endpoints;
 using Gozer.Endpoints.Service;

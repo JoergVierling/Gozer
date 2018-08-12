@@ -1,7 +1,7 @@
 ﻿using System;
 using Gozer.Contract;
+using Gozer.Contract.Health;
 using Gozer.Core;
-using Gozer.Core.Health.Contract;
 
 namespace Gozer.Health.Implementation
 {
@@ -26,44 +26,11 @@ namespace Gozer.Health.Implementation
             }
             catch (Exception e)
             {
-               
+
                 isAlive = false;
             }
 
             return isAlive;
         }
-
-        public string GetCpuUsage()
-        {
-            string cpuLoad = null;
-
-            try
-            {
-                cpuLoad = _channel.GetCpuLoad();
-            }
-            catch (Exception e)
-            {
-                
-            }
-
-            return cpuLoad;
-        }
-
-        public string GetMemUsage()
-        {
-            string memUsage = null;
-
-            try
-            {
-                memUsage = _channel.GetMemLoad();
-            }
-            catch (Exception e)
-            {
-   
-            }
-
-            return memUsage;
-        }
-
     }
 }

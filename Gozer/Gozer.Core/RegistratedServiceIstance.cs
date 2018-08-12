@@ -1,11 +1,9 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using Gozer.Contract;
 using Gozer.Contract.Communication;
-using Gozer.Core;
 using Newtonsoft.Json;
 
-namespace Gozer.Clortho
+namespace Gozer.Core
 {
     public class RegistratedServiceIstance : IRegistratedServiceIstance
     {

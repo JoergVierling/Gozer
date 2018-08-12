@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Gozer.Contract;
 using Gozer.Contract.Communication;
+using Gozer.Contract.Health;
 using Gozer.Core;
 using Gozer.Core.Communication;
-using Gozer.Core.Health.Contract;
 using Newtonsoft.Json;
 
 namespace Gozer.Clortho.WebApi.Core.FactoryClasses
@@ -36,7 +36,7 @@ namespace Gozer.Clortho.WebApi.Core.FactoryClasses
             {
                 AssambliQualifiedName = typeof(T).AssemblyQualifiedName,
                 EndpointAdress = endpoint,
-                binding = binding
+                Binding = binding
             };
 
             string data = JsonConvert.SerializeObject(serviceRequest, jsonSerializerSettings);
@@ -60,7 +60,7 @@ namespace Gozer.Clortho.WebApi.Core.FactoryClasses
             {
                 AssambliQualifiedName = typeof(T).AssemblyQualifiedName,
                 EndpointAdress = endpoint,
-                binding = binding,
+                Binding = binding,
                 Signature = encryption
             };
 

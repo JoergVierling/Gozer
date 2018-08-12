@@ -1,7 +1,4 @@
 ﻿using Gozer.Contract.Communication;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Gozer.Contract
 {

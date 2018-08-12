@@ -16,9 +16,7 @@ namespace Gozer.Health.Implementation
         {
             ServiceHealth health = new ServiceHealth(service)
             {
-                IsAlive = _srcFunctions.IsServiceAlive(),
-                CpuUsage = _srcFunctions.GetCpuUsage(),
-                FreeMemory = _srcFunctions.GetMemUsage()
+                IsAlive = _srcFunctions.IsServiceAlive()
             };
 
             return health;
