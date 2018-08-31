@@ -20,7 +20,7 @@ using Newtonsoft.Json;
 
 namespace Gozer.Endpoints.Service
 {
-    internal class RegisterEndpoint : IEndpointHandler
+    public class RegisterEndpoint : IEndpointHandler
     {
         private readonly ILogger _logger;
         private readonly IServiceSheldManager _serviceSheldManager;

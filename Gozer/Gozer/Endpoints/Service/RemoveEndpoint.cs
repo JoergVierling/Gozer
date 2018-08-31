@@ -16,13 +16,13 @@ using Newtonsoft.Json;
 
 namespace Gozer.Endpoints.Service
 {
-    internal class RemoveEndpoint : IEndpointHandler
+    public class RemoveEndpoint : IEndpointHandler
     {
         private readonly ILogger _logger;
         private readonly IServiceSheldManager _serviceSheldManager;
 
         public RemoveEndpoint(
-            ILogger<RegisterEndpoint> logger, IServiceSheldManager serviceSheldManager)
+            ILogger<RemoveEndpoint> logger, IServiceSheldManager serviceSheldManager)
         {
             _logger = logger;
             _serviceSheldManager = serviceSheldManager;

@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace Gozer.Endpoints.Service
 {
-    internal class HealthEndpoint : IEndpointHandler
+    public class HealthEndpoint : IEndpointHandler
     {
 
         private readonly ILogger _logger;
