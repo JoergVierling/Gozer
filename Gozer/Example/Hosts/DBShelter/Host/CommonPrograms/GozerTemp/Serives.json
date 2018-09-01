@@ -1,0 +1,9 @@
+[
+  {
+    "Guid": "b43d1ba2-9a17-4b3b-b5c1-a899b01c6281",
+    "AssambliQualifiedName": "Lfp.Artefakt.Service.Contract.IArtefactService, Lfp.Artefakt.Service.Contract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "Binding": 2,
+    "EndpointAdress": "http://msappdev01:8021",
+    "LastCall": "0001-01-01T00:00:00"
+  }
+]
