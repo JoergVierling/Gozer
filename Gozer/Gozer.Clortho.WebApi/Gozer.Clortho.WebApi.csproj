@@ -73,6 +73,10 @@
       <Project>{4635f2ac-c6c8-471a-96a1-0f356c64c883}</Project>
       <Name>Gozer.Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gozer.Core.Wcf\Gozer.Core.Wcf.csproj">
+      <Project>{C07A8D42-1C33-4246-91DC-2ADE29E97C9B}</Project>
+      <Name>Gozer.Core.Wcf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gozer.Core\Gozer.Core.csproj">
       <Project>{60921729-a3ba-4609-92e5-316bd1521189}</Project>
       <Name>Gozer.Core</Name>
