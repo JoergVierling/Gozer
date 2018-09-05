@@ -79,15 +79,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gozer.Clortho.WebApi.Core",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gozer.Clortho.WebApi", "Gozer.Clortho.WebApi\Gozer.Clortho.WebApi.csproj", "{A5F56C2C-171D-409A-8402-00DF6E7FDF81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gozer.Core.Wcf", "Gozer.Core.Wcf\Gozer.Core.Wcf.csproj", "{C07A8D42-1C33-4246-91DC-2ADE29E97C9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gozer.Core.Wcf", "Gozer.Core.Wcf\Gozer.Core.Wcf.csproj", "{C07A8D42-1C33-4246-91DC-2ADE29E97C9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{A54408C8-CB74-486F-ADB9-1FBB5E2F43B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "IntegrationTests", "{0519CAD4-FB6A-4793-8B4C-E32FA3DE6778}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gozer.Endpoints.Test", "Test\UnitTests\Gozer.Endpoints.Test\Gozer.Endpoints.Test.csproj", "{25F0B229-7492-4C42-BAE3-FC8D39238226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gozer.Endpoints.Test", "Test\UnitTests\Gozer.Endpoints.Test\Gozer.Endpoints.Test.csproj", "{25F0B229-7492-4C42-BAE3-FC8D39238226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gozer.CommonTest", "Gozer.CommonTest\Gozer.CommonTest.csproj", "{47FF3A2D-F0CF-4C8C-8FC2-EB0C5974DD6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gozer.CommonTest", "Gozer.CommonTest\Gozer.CommonTest.csproj", "{47FF3A2D-F0CF-4C8C-8FC2-EB0C5974DD6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gozer.Health.Test", "Gozer.Health.Test\Gozer.Health.Test.csproj", "{8FF97076-70FD-4569-A92D-CF42D27865F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B89B799-0ACD-4ADB-ADCE-FAAC89D06E4A}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gozer.Options.Test", "Test\UnitTests\Gozer.Options.Test\Gozer.Options.Test.csproj", "{7FC2B261-1A4B-45D7-89FD-1782C5AB73E9}"
 EndProject
@@ -193,6 +200,7 @@ Global
 		{47FF3A2D-F0CF-4C8C-8FC2-EB0C5974DD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47FF3A2D-F0CF-4C8C-8FC2-EB0C5974DD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47FF3A2D-F0CF-4C8C-8FC2-EB0C5974DD6D}.Release|Any CPU.Build.0 = Release|Any CPU
+
 		{7FC2B261-1A4B-45D7-89FD-1782C5AB73E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7FC2B261-1A4B-45D7-89FD-1782C5AB73E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC2B261-1A4B-45D7-89FD-1782C5AB73E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -205,6 +213,12 @@ Global
 		{D8763074-48B3-4717-9CD3-275644A2031E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8763074-48B3-4717-9CD3-275644A2031E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8763074-48B3-4717-9CD3-275644A2031E}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{8FF97076-70FD-4569-A92D-CF42D27865F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FF97076-70FD-4569-A92D-CF42D27865F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FF97076-70FD-4569-A92D-CF42D27865F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FF97076-70FD-4569-A92D-CF42D27865F0}.Release|Any CPU.Build.0 = Release|Any CPU
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -241,6 +255,8 @@ Global
 		{7FC2B261-1A4B-45D7-89FD-1782C5AB73E9} = {A54408C8-CB74-486F-ADB9-1FBB5E2F43B6}
 		{F256D5B1-C21A-446C-9DFE-93054E85469E} = {A54408C8-CB74-486F-ADB9-1FBB5E2F43B6}
 		{D8763074-48B3-4717-9CD3-275644A2031E} = {A54408C8-CB74-486F-ADB9-1FBB5E2F43B6}
+		{8FF97076-70FD-4569-A92D-CF42D27865F0} = {A54408C8-CB74-486F-ADB9-1FBB5E2F43B6}
+
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F566AD49-4BBB-4E94-B842-7E50DA361DB4}

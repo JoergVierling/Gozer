@@ -40,7 +40,6 @@ namespace Gozer.Endpoints.Test
             var result = _subject.Process(_context) as ServiceResultManager<IInventury>;
 
             result.Should().NotBeNull();
-            result._result.services.Should().HaveCount(1);
 
             await result.ExecuteAsync(_context);
 

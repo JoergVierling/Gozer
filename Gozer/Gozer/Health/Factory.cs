@@ -2,7 +2,6 @@
 using Gozer.Contract;
 using Gozer.Contract.Health;
 using Gozer.Health.Implementation;
-using ServiceHealthCreator = Gozer.Health.Implementation.ServiceHealthCreator;
 
 namespace Gozer.Health
 {
@@ -10,7 +9,7 @@ namespace Gozer.Health
     {
         public static bool IsServiceAlive(IService src)
         {
-            IServiceHealthFunctions serviceHealthFuncitons ;
+            IServiceHealthFunctions serviceHealthFuncitons;
             switch (src.Binding)
             {
                 case ServicesBinding.WebApi:
@@ -39,7 +38,7 @@ namespace Gozer.Health
 
             var srcHealthCreator = new ServiceHealthCreator(serviceHealthFuncitons);
 
-            return srcHealthCreator.GetServiceHealth(src); 
+            return srcHealthCreator.GetServiceHealth(src);
         }
     }
 }

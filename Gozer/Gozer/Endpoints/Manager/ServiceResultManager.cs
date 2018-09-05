@@ -7,7 +7,7 @@
  {
      public class ServiceResultManager<T> : IEndpointManager
      {
-         public T _result;
+         private T _result;
  
          public ServiceResultManager(T result)
          {

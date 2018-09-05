@@ -1,7 +1,7 @@
 ﻿using Gozer.Contract;
 using Gozer.Health.Model;
 
-namespace Gozer.Health.Implementation
+namespace Gozer.Health
 {
     public class ServiceHealthCreator
     {
