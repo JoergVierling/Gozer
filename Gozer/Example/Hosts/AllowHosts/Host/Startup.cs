@@ -38,7 +38,7 @@ namespace Host
                     options.Secrutiy.UseCertificateForRegistration = false;
                     options.Secrutiy.AllowedHosts = new List<string> {"localhost"};
                 })
-                .AddInMemoryShelter(new ServiceSelector());
+                .AddInMemoryShelter();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

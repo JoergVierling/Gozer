@@ -4,6 +4,7 @@ using FluentAssertions;
 using Gozer.Contract;
 using Gozer.Core;
 using Gozer.Services;
+using Gozer.Shelter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Serialization;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gozer.Contract;
 
-namespace Gozer.Services
+namespace Gozer.Shelter
 {
     public class InMemoryShelter : ISheldService
     {
